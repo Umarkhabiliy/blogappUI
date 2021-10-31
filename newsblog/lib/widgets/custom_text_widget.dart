@@ -11,7 +11,7 @@ class TextWidget extends StatelessWidget {
       {this.text,
       this.size = 12.0,
       this.weight = FontWeight.w400,
-      this.color = black700,
+      this.color = buttonText,
       Key? key})
       : super(key: key);
 

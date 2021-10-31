@@ -1,12 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class BottomNavBar extends StatelessWidget {
-  const BottomNavBar({Key? key}) : super(key: key);
+class BottomNavBar extends StatefulWidget {
+  BottomNavBar({
+    Key? key, required this.currentPage
+  }) : super(key: key);
+int currentPage;
+  @override
+  State<BottomNavBar> createState() => _BottomNavBarState();
+}
+
+class _BottomNavBarState extends State<BottomNavBar> {
+  
 
   @override
   Widget build(BuildContext context) {
     return CupertinoTabBar(
+      currentIndex: widget.currentPage,
+
+      // CHANGE TO PROVIDER
+      onTap: (index) {
+        widget.currentPage = index;
+        setState(() {
+        });
+      },
       items: const [
         BottomNavigationBarItem(icon: Icon(CupertinoIcons.home), label: "home"),
         BottomNavigationBarItem(

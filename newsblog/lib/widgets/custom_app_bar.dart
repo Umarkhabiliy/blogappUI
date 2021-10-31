@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +9,8 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   VoidCallback? onPressed;
   PageController? pageController;
+   final actions;
+   PreferredSizeWidget? bottom;
   @override
   Size get preferredSize => Size.fromHeight(height);
 
@@ -20,27 +20,35 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       this.title,
       this.onPressed,
       this.pageController,
+      this.actions,
+      this.bottom,
       Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      bottom: bottom,
       centerTitle: true,
       elevation: 0,
-
+      leadingWidth: 70.w,
       // titleSpacing: 30,
-      backgroundColor: const Color(0xFF9E0306),
+      backgroundColor: applight,
       leading: TextButton(
         onPressed: () {},
-        child:  TextWidget(text:"Menu"),
+        child: TextWidget(
+          text: "Menu",
+          size: 18.sp,
+        ),
       ),
 
-      title: Text(
-        title!,
-        style:
-            TextStyle(color: black700, fontWeight: weight700, fontSize: 20.sp),
+      title: TextWidget(
+        text: title!,
+        color: buttonText,
+        size: 20.sp,
+        weight: FontWeight.w700,
       ),
+      actions: actions,
     );
   }
 }

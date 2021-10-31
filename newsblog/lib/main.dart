@@ -21,7 +21,7 @@ class BlogApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: const MainBlog(),
+      home:  MainBlog(),
     );
   }
 }
