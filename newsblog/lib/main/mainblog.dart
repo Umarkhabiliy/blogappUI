@@ -6,7 +6,8 @@ import 'package:newsblog/consts/colors.dart';
 import 'package:newsblog/screens/home_page/home_page.dart';
 import 'package:newsblog/screens/mynews/my_news.dart';
 import 'package:newsblog/screens/search/search_page.dart';
-import 'package:newsblog/screens/video/video_page.dart';
+import 'package:newsblog/screens/settings/settings_page.dart';
+
 import 'package:newsblog/widgets/custom_app_bar.dart';
 import 'package:newsblog/widgets/custom_text_widget.dart';
 
@@ -24,9 +25,9 @@ class _MainBlogState extends State<MainBlog> {
 
   List<Widget> pages = [
     const HomePage(),
-     MyNews(),
-    const VideoPage(),
+    MyNews(),
     const SearchPage(),
+     SettingsAdminPage(),
   ];
 
   @override
@@ -36,15 +37,15 @@ class _MainBlogState extends State<MainBlog> {
         BoxConstraints(maxWidth: size.width, maxHeight: size.height),
         designSize: const Size(360, 690),
         orientation: Orientation.portrait);
-    return Scaffold(backgroundColor: tabBorder,
-        
+    return Scaffold(
+        backgroundColor: tabBorder,
         body: IndexedStack(
           index: curentPage,
           children: pages,
         ),
         bottomNavigationBar: CupertinoTabBar(
           currentIndex: curentPage,
-activeColor: applight,
+          activeColor: applight,
           // CHANGE TO PROVIDER
           onTap: (index) {
             curentPage = index;
@@ -52,7 +53,7 @@ activeColor: applight,
           },
           items: const [
             BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.news_solid), label:"Top Stories"),
+                icon: Icon(CupertinoIcons.news_solid), label: "Top Stories"),
             BottomNavigationBarItem(
                 icon: Icon(CupertinoIcons.news), label: "My News"),
             BottomNavigationBarItem(

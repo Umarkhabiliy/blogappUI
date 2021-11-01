@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:newsblog/screens/mynews/my_news.dart';
 import 'package:newsblog/widgets/custom_app_bar.dart';
 import 'package:newsblog/widgets/custom_button.dart';
 import 'package:newsblog/widgets/custom_tffd.dart';
@@ -151,7 +152,8 @@ class _UpdatePostsPageState extends State<UpdatePostsPage> {
                       contentEditingController.clear();
                       imageEditingController.clear();
                       categoryEditingController.clear();
-                      Navigator.pop(context);
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (ctx) => MyNews()));
                       setState(() {});
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -172,40 +174,3 @@ class _UpdatePostsPageState extends State<UpdatePostsPage> {
     );
   }
 }
-
-/**ElevatedButton(
-                                  child: const Text("UPDATE POST"),
-                                  style: ElevatedButton.styleFrom(
-                                      primary: Colors.green),
-                                  onPressed: () async {
-                                    try {
-                                      await Dio().patch(
-                                        'http://localhost:3000/news/update',
-                                        data: {
-                                          "title": _titleController.text,
-                                          "newContent": _contentController.text,
-                                        },
-                                        options: Options(
-                                            contentType: 'application/json'),
-                                      );
-                                      _titleController.clear();
-                                      _contentController.clear();
-                                      _imageController.clear();
-                                      _categoryController.clear();
-                                      Navigator.pop(context);
-                                      setState(() {});
-                                    } catch (e) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        const SnackBar(
-                                          backgroundColor: Colors.redAccent,
-                                          content: Text("XATO BOR !"),
-                                        ),
-                                      );
-                                    }
-                                  },
-                                ),
-                              ],
-                            ),
-                          );
-                        }); */

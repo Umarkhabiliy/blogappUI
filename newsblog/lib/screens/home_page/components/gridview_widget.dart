@@ -21,8 +21,11 @@ class GridNews extends StatelessWidget {
                 color: const Color(0xFFF3F3F3),
                 child: Column(
                   children: [
-                    Image.network(
-                      "https://source.unsplash.com/random",
+                    SizedBox(width: MediaQuery.of(context).size.width,
+                    height: 100,
+                      child: Image.network(
+                        "https://source.unsplash.com/random",fit: BoxFit.cover,
+                      ),
                     ),
                     //  Align(alignment: Alignment.center,child: Divider(color:Colors.red,thickness: 2,))
                     TextWidget(
